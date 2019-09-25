@@ -15,12 +15,22 @@ Note:
 n is a positive integer, which is in the range of [1, 10000].
 All the integers in the array will be in the range of [-10000, 10000].
 */
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-
+	input := []int{1, 4, 3, 2}
+	output := arrayPairSum(input)
+	fmt.Println(output)
 }
 
 func arrayPairSum(nums []int) int {
-
-	return 1
+	sort.Ints(nums)
+	ret := 0
+	for i := 0; i < len(nums); i += 2 {
+		ret += nums[i]
+	}
+	return ret
 }

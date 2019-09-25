@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /**
 Given an array of integers A sorted in non-decreasing order,
@@ -34,6 +36,23 @@ func main() {
 }
 
 func sortedSquares(A []int) []int {
+	ret := make([]int, len(A))
+	l, r, p := 0, len(A), len(A)-1
 
-	return A
+	for {
+		if l >= r {
+			return ret
+		}
+
+		x, y := A[l]*A[l], A[r-1]*A[r-1]
+		if x >= y {
+			ret[p] = x
+			p--
+			l++
+		} else {
+			ret[p] = y
+			p--
+			r--
+		}
+	}
 }
